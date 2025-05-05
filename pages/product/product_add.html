@@ -335,7 +335,7 @@ Alpine.data("addProductComponent", () => ({
         formData.append('price', parseFloat(this.newProduct.price).toFixed(2));
         formData.append('stock', parseInt(this.newProduct.stock, 10));
         if (this.newProduct.image) {
-            formData.append('product_image', this.newProduct.image);
+            formData.append('p_image', this.newProduct.image);
         }
 
         console.log("FormData contents:");

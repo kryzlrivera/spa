@@ -47,7 +47,7 @@
                     <tr>
                         <td class="image-column">
                             <img 
-                                :src="getImageUrl(order.receipt_image)" 
+                                :src="getImageUrl(order.avatar_image)" 
                                 alt="Receipt Image" 
                                 class="order-image"
                                 @error="this.src='https://via.placeholder.com/50'"
@@ -84,7 +84,7 @@
         <template x-for="(order, index) in filteredOrders" :key="index">
             <div class="circle-card" @click="selectedOrder = order">
                 <div class="circle-image">
-                    <img :src="getImageUrl(order.receipt_image)" 
+                    <img :src="getImageUrl(order.avatar_image)""
                          alt="Receipt Image"
                          @error="this.src='https://via.placeholder.com/150'">
                 </div>
@@ -111,7 +111,7 @@
             <template x-if="selectedOrder">
                 <div class="modal-body">
                     <div class="modal-image">
-                        <img :src="getImageUrl(selectedOrder.receipt_image)" 
+                        <img :src="getImageUrl(selectedOrder.avatar_image)""
                              alt="Receipt Image"
                              @error="this.src='https://via.placeholder.com/300'">
                     </div>
@@ -512,7 +512,7 @@ Alpine.data("orderListComponent", () => ({
                     total_amount: order.total_amount ? parseFloat(order.total_amount) : 0,
                     products: Array.isArray(order.products) ? order.products : [],
                     created_at: order.created_at || null,
-                    receipt_image: order.receipt_image || null
+                    avatar_image: order.avatar_image || null
                 }));
 
                 console.log("Processed orders:", JSON.stringify(this.orders, null, 2));
@@ -554,7 +554,7 @@ Alpine.data("orderListComponent", () => ({
 
     getImageUrl(imagePath) {
         if (!imagePath) {
-            console.log("No receipt_image provided, using placeholder");
+            console.log("No avatar_image provided, using placeholder");
             return 'https://via.placeholder.com/150';
         }
         const isAbsoluteUrl = imagePath.startsWith('http://') || imagePath.startsWith('https://');

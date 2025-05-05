@@ -23,7 +23,7 @@
                            class="cart-checkbox-input">
                 </div>
                 <div class="cart-image">
-                    <img :src="item.product_image || 'https://via.placeholder.com/150'" alt="Product Image" @error="console.log('Cart image failed to load for ' + item.name + ': ' + item.product_image)">
+                    <img :src="item.p_image || 'https://via.placeholder.com/150'" alt="Product Image" @error="console.log('Cart image failed to load for ' + item.name + ': ' + item.product_image)">
                 </div>
                 <div class="cart-details">
                     <div class="cart-name" x-text="item.name || 'Unknown'"></div>

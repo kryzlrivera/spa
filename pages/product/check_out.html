@@ -35,7 +35,7 @@
                 <template x-for="(item, index) in cartItems" :key="index">
                     <div class="cart-item" @click="toggleDetails(index)">
                         <div class="item-image">
-                            <img :src="item.product_image || 'https://via.placeholder.com/80'" 
+                            <img :src="item.p_image || 'https://via.placeholder.com/80'" 
                                  :alt="item.name">
                         </div>
                         <div class="item-details">
@@ -615,7 +615,7 @@ Alpine.data("paymentComponent", () => ({
         email: '',
         address: '',
         payment_method: '',
-        receipt_image: null
+        avatar_image: null
     }),
     cartItems: Alpine.reactive(JSON.parse(localStorage.getItem('checkoutItems')) || []),
     message: '',
@@ -696,14 +696,14 @@ Alpine.data("paymentComponent", () => ({
                 URL.revokeObjectURL(this.imagePreview);
             }
 
-            this.paymentData.receipt_image = file;
+            this.paymentData.avatar_image = file;
             this.imagePreview = URL.createObjectURL(file);
             console.log("Image selected:", file.name, file.type, file.size);
         } else {
             if (this.imagePreview) {
                 URL.revokeObjectURL(this.imagePreview);
             }
-            this.paymentData.receipt_image = null;
+            this.paymentData.avatar_image = null;
             this.imagePreview = null;
             console.log("No image selected");
         }
@@ -716,7 +716,7 @@ Alpine.data("paymentComponent", () => ({
         if (this.imagePreview) {
             URL.revokeObjectURL(this.imagePreview);
         }
-        this.paymentData.receipt_image = null;
+        this.paymentData.avatar_image = null;
         this.imagePreview = null;
         if (this.$refs.fileInput) {
             this.$refs.fileInput.value = '';
@@ -727,7 +727,7 @@ Alpine.data("paymentComponent", () => ({
         if (this.imagePreview) {
             URL.revokeObjectURL(this.imagePreview);
         }
-        this.paymentData.receipt_image = null;
+        this.paymentData.avatar_image = null;
         this.imagePreview = null;
         if (this.$refs.fileInput) {
             this.$refs.fileInput.value = '';
@@ -773,16 +773,16 @@ Alpine.data("paymentComponent", () => ({
             return;
         }
 
-        if (this.paymentData.receipt_image) {
+        if (this.paymentData.avatar_image) {
             const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (!(this.paymentData.receipt_image instanceof File) || 
-                !validImageTypes.includes(this.paymentData.receipt_image.type)) {
+            if (!(this.paymentData.avatar_image instanceof File) || 
+                !validImageTypes.includes(this.paymentData.avatar_image.type)) {
                 this.message = "Please upload a valid image (JPEG, PNG or GIF).";
                 this.messageType = "red";
                 setTimeout(() => { this.message = ""; }, 3000);
                 return;
             }
-            if (this.paymentData.receipt_image.size > 5 * 1024 * 1024) {
+            if (this.paymentData.avatar_image.size > 5 * 1024 * 1024) {
                 this.message = "Image file is too large (max 5MB).";
                 this.messageType = "red";
                 setTimeout(() => { this.message = ""; }, 3000);
@@ -814,15 +814,15 @@ Alpine.data("paymentComponent", () => ({
             price: Number(item.price)
         }))));
 
-        if (this.paymentData.receipt_image instanceof File) {
-            formData.append('receipt_image', this.paymentData.receipt_image);
-            console.log("Appending receipt_image:", {
-                name: this.paymentData.receipt_image.name,
-                type: this.paymentData.receipt_image.type,
-                size: this.paymentData.receipt_image.size
+        if (this.paymentData.avatar_image instanceof File) {
+            formData.append('avatar_image', this.paymentData.avatar_image);
+            console.log("Appending avatar_image:", {
+                name: this.paymentData.avatar_image.name,
+                type: this.paymentData.avatar_image.type,
+                size: this.paymentData.avatar_image.size
             });
         } else {
-            console.log("No receipt_image provided, sending without image.");
+            console.log("No avatar_image provided, sending without image.");
         }
 
         try {
