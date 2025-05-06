@@ -826,7 +826,7 @@ Alpine.data("paymentComponent", () => ({
         }
 
         try {
-            const response = await Alpine.store('api').fetch('http://172.17.100.14:3329/default/api/payments/', {
+            const response = await Alpine.store('api').fetch('http://172.17.100.14:3342/default/api/payments/', {
                 method: 'POST',
                 body: formData
             });
