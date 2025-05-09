@@ -826,7 +826,7 @@ Alpine.data("paymentComponent", () => ({
         }
 
         try {
-            const response = await Alpine.store('api').fetch('http://172.17.100.14:3342/default/api/payments/', {
+            const response = await Alpine.store('api').fetch('http://172.17.100.14:3338/rivera5/api/payments/', {
                 method: 'POST',
                 body: formData
             });
@@ -848,7 +848,7 @@ Alpine.data("paymentComponent", () => ({
             // Update stock quantities in the database
             for (const item of this.cartItems) {
                 const updatedStock = item.stock - item.quantity;
-                const stockResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3332/martinito3/api/products/${item.id}/`, {
+                const stockResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${item.id}/`, {
                     method: "PATCH",
                     body: JSON.stringify({ stock: updatedStock }),
                     headers: { 'Content-Type': 'application/json' }

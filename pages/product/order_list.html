@@ -488,7 +488,7 @@ Alpine.data("orderListComponent", () => ({
 
         while (retries > 0) {
             try {
-                const response = await Alpine.store('api').fetch('http://172.17.100.14:3342/default/api/payments/', {
+                const response = await Alpine.store('api').fetch('http://172.17.100.14:3338/rivera5/api/payments/', {
                     method: "GET",
                     headers: { 'Content-Type': 'application/json' }
                 });
@@ -558,7 +558,7 @@ Alpine.data("orderListComponent", () => ({
             return 'https://via.placeholder.com/150';
         }
         const isAbsoluteUrl = imagePath.startsWith('http://') || imagePath.startsWith('https://');
-        const url = isAbsoluteUrl ? imagePath : `http://172.17.100.14:3342/default${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+        const url = isAbsoluteUrl ? imagePath : `http://172.17.100.14:3338/rivera5${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
         console.log(`Resolved image URL: ${url}`);
         return url;
     },

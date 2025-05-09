@@ -416,7 +416,7 @@ Alpine.data("cartComponent", () => ({
         while (retries > 0) {
             try {
                 const updatedStock = item.stock - 1;
-                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${item.id}/`, {
+                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${item.id}/`, {
                     method: "PATCH",
                     body: JSON.stringify({ stock: updatedStock }),
                     headers: { 'Content-Type': 'application/json' }
@@ -464,7 +464,7 @@ Alpine.data("cartComponent", () => ({
         while (retries > 0) {
             try {
                 const updatedStock = item.stock + 1;
-                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${item.id}/`, {
+                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${item.id}/`, {
                     method: "PATCH",
                     body: JSON.stringify({ stock: updatedStock }),
                     headers: { 'Content-Type': 'application/json' }
@@ -509,7 +509,7 @@ Alpine.data("cartComponent", () => ({
             for (const idx of itemsToRemove) {
                 const item = this.cartItems[idx];
                 const updatedStock = item.stock + item.quantity;
-                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${item.id}/`, {
+                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${item.id}/`, {
                     method: "PATCH",
                     body: JSON.stringify({ stock: updatedStock }),
                     headers: { 'Content-Type': 'application/json' }

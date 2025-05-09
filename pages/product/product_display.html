@@ -605,7 +605,7 @@ Alpine.data("productListComponent", () => ({
         this.message = "Loading products...";
         this.messageType = "blue";
 
-        const url = new URL('http://172.17.100.14:3342/default/api/products/');
+        const url = new URL('http://172.17.100.14:3338/rivera5/api/products/');
 
         while (retries > 0) {
             try {
@@ -651,7 +651,7 @@ Alpine.data("productListComponent", () => ({
 
         try {
             const updatedStock = product.stock - 1;
-            const stockResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${product.id}/`, {
+            const stockResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${product.id}/`, {
                 method: "PATCH",
                 body: JSON.stringify({ stock: updatedStock }),
                 headers: { 'Content-Type': 'application/json' }
@@ -672,7 +672,7 @@ Alpine.data("productListComponent", () => ({
                 formData.append('p_image_url', product.p_image);
             }
 
-            const cartResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/cart-items/`, {
+            const cartResponse = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/cart-items/`, {
                 method: "POST",
                 body: formData
             });
@@ -741,7 +741,7 @@ Alpine.data("productListComponent", () => ({
         while (retries > 0) {
             try {
                 const updatedStock = product.stock + newStock;
-                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${product.id}/`, {
+                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${product.id}/`, {
                     method: "PATCH",
                     body: JSON.stringify({ stock: updatedStock }),
                     headers: { 'Content-Type': 'application/json' }
@@ -785,7 +785,7 @@ Alpine.data("productListComponent", () => ({
 
         while (retries > 0) {
             try {
-                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3342/default/api/products/${product.id}/`, {
+                const response = await Alpine.store('api').fetch(`http://172.17.100.14:3338/rivera5/api/products/${product.id}/`, {
                     method: "DELETE",
                     headers: { 'Content-Type': 'application/json' }
                 });
